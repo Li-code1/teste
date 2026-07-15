@@ -1,0 +1,349 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Work+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+.llp{
+  --ivory:#EDE9E3; --nude:#E7D7C9; --rose:#D4B2A7; --stone:#CDC6C3; --latte:#A38F85;
+  --paper:#EDE9E3; --paper-alt:#E7D7C9; --ink:#3B2E28; --ink-soft:#6E5B51; --rose-dark:#96695C;
+  --line:rgba(59,46,40,0.14); --radius:26px; --shadow:0 20px 45px -20px rgba(59,46,40,0.25);
+  font-family:'Work Sans',sans-serif; color:var(--ink); background:var(--paper); line-height:1.6;
+}
+.llp *, .llp *::before, .llp *::after{ box-sizing:border-box; }
+.llp h1,.llp h2,.llp h3,.llp h4{ font-family:'Fraunces',serif; font-weight:600; line-height:1.15; margin:0 0 .5em; color:var(--ink); }
+.llp p{ margin:0 0 1em; }
+.llp section{ padding:4rem 1.5rem; }
+.llp .wrap{ max-width:900px; margin:0 auto; }
+.llp .center{ text-align:center; }
+.llp .eyebrow{
+  font-family:'Space Mono',monospace; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--rose-dark); display:inline-flex; align-items:center; gap:.5em; margin-bottom:1em;
+}
+.llp .eyebrow::before{ content:""; width:22px; height:1px; background:var(--rose-dark); display:inline-block; }
+.llp .btn{
+  display:inline-flex; align-items:center; gap:.6em; font-weight:600; font-size:.98rem;
+  padding:.95em 1.7em; border-radius:100px; border:none; cursor:pointer;
+  transition:transform .25s ease; background:var(--rose-dark); color:#fff; width:100%; justify-content:center;
+}
+.llp .btn:hover{ transform:translateY(-2px); }
+
+/* HERO DO TESTE */
+.llp .teste-hero{ background:var(--ink); color:var(--ivory); text-align:center; padding:4.5rem 1.5rem 3.5rem; }
+.llp .teste-hero h1{ color:var(--ivory); font-size:clamp(2rem,4vw,2.8rem); }
+.llp .teste-hero p{ color:rgba(237,233,227,.75); max-width:520px; margin:0 auto; font-size:1.05rem; }
+
+/* CARD GENÉRICO */
+.llp .card{
+  background:#fff; border-radius:var(--radius); padding:2.2rem; box-shadow:var(--shadow); margin-bottom:1.6rem;
+}
+
+/* 4 TEMPERAMENTOS */
+.llp .temper-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin:1.6rem 0; }
+.llp .temper-card{ background:var(--paper-alt); border-radius:16px; padding:1.1rem; text-align:center; }
+.llp .temper-card strong{ display:block; font-family:'Fraunces',serif; margin-bottom:.3rem; }
+.llp .temper-card span{ font-size:.82rem; color:var(--ink-soft); }
+@media (max-width:700px){ .llp .temper-grid{ grid-template-columns:1fr 1fr; } }
+
+.llp .destaque, .llp .highlight{
+  background:var(--paper-alt); border-left:3px solid var(--rose-dark); padding:1rem 1.3rem;
+  border-radius:12px; font-style:italic; color:var(--ink);
+}
+
+/* FORM */
+.llp input[type="text"]{
+  width:100%; padding:.9em 1em; border-radius:12px; border:1.5px solid var(--line);
+  font-family:'Work Sans',sans-serif; font-size:1rem; margin-bottom:1rem; background:#fff; color:var(--ink);
+}
+.llp input[type="text"]:focus{ outline:none; border-color:var(--rose-dark); }
+.llp .question{ margin-bottom:1.6rem; }
+.llp .question > p{ font-weight:600; margin-bottom:.7rem; }
+.llp .option{
+  display:flex; align-items:center; padding:.9rem 1.1rem; margin:.5rem 0; border-radius:12px;
+  background:var(--paper-alt); cursor:pointer; transition:background .2s;
+}
+.llp .option:hover{ background:var(--stone); }
+.llp .option input{ display:none; }
+.llp .option span{ flex:1; font-size:.95rem; }
+.llp .option input:checked + span{ font-weight:700; color:var(--rose-dark); }
+
+/* RESULTADO */
+.llp #resultado{ display:none; }
+.llp #resultado h2{ font-size:1.5rem; }
+
+/* CTA VENDA */
+.llp .venda{
+  text-align:center; background:var(--ink); color:var(--ivory); border-radius:var(--radius);
+  padding:2.4rem 2rem; margin-bottom:1.6rem;
+}
+.llp .venda h2{ color:var(--ivory); }
+.llp .venda p{ color:rgba(237,233,227,.75); }
+.llp .venda .btn{ width:auto; margin-top:.6rem; background:#25D366; }
+
+/* VÍDEOS */
+.llp .video-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1.4rem; }
+.llp .video-card{ background:#fff; border-radius:18px; padding:1rem; box-shadow:var(--shadow); }
+.llp .video-card iframe{ width:100%; height:220px; border-radius:12px; border:none; display:block; }
+.llp .video-card p{ margin:.8rem 0 0; font-weight:600; font-size:.92rem; }
+@media (max-width:700px){ .llp .video-grid{ grid-template-columns:1fr; } }
+</style>
+
+<div class="llp">
+
+  <section class="teste-hero">
+    <span class="eyebrow" style="color:var(--rose);">Autoconhecimento</span>
+    <h1>Descubra seu temperamento</h1>
+    <p>Entenda sua mente, suas emoções e os padrões que guiam suas reações — em menos de 2 minutos.</p>
+  </section>
+
+  <section>
+    <div class="wrap">
+
+      <div class="card">
+        <h2>Descubra o padrão emocional que guia sua vida</h2>
+        <p>Você já se perguntou por que reage de certas formas, mesmo quando não quer? Por que algumas situações te afetam mais do que outras?</p>
+        <p>O teste de temperamento é uma ferramenta de autoconhecimento baseada nos estudos de Hipócrates e Galeno, que revela padrões profundos da sua forma de pensar, sentir e agir.</p>
+        <h3>Os 4 temperamentos</h3>
+        <p>Hipócrates propôs que o comportamento humano é influenciado por quatro humores corporais, dando origem aos quatro temperamentos:</p>
+        <div class="temper-grid">
+          <div class="temper-card"><strong>Colérico</strong><span>Direto, decidido, orientado a resultados</span></div>
+          <div class="temper-card"><strong>Sanguíneo</strong><span>Comunicativo, emocional, sociável</span></div>
+          <div class="temper-card"><strong>Melancólico</strong><span>Analítico, profundo, detalhista</span></div>
+          <div class="temper-card"><strong>Fleumático</strong><span>Calmo, estável, equilibrado</span></div>
+        </div>
+        <p>Hoje, esse modelo continua sendo utilizado como base para desenvolvimento pessoal e compreensão emocional.</p>
+        <p class="destaque">Você não reage ao mundo por acaso — existe um padrão por trás do seu comportamento.</p>
+        <p style="margin-top:1rem;">Ao responder esse teste, você vai identificar:</p>
+        <ul style="margin:0 0 1rem 1.2rem; color:var(--ink-soft);">
+          <li>Como você reage emocionalmente</li>
+          <li>Seus padrões de comportamento</li>
+          <li>Seus gatilhos internos</li>
+          <li>E por que você age da forma que age</li>
+        </ul>
+        <p class="highlight">Leva menos de 2 minutos — mas pode te dar uma clareza que você nunca teve.</p>
+      </div>
+
+      <div class="card">
+        <h2>Faça o teste</h2>
+        <input type="text" id="nome" placeholder="Seu nome">
+        <form id="quiz">
+          <div id="questions"></div>
+          <button type="button" class="btn" onclick="calcular()">Ver resultado</button>
+        </form>
+      </div>
+
+      <div id="resultado" class="card"></div>
+
+      <div class="card venda">
+        <h2>Quer entender isso mais profundamente?</h2>
+        <p>Eu posso te ajudar a interpretar seu resultado e trabalhar suas emoções.</p>
+        <button class="btn" onclick="enviarWhats()">Agendar sessão no WhatsApp</button>
+      </div>
+
+   <div class="card">
+  <h2>Assista à série completa</h2>
+  <div class="video-grid">
+    <div class="video-card">
+      <iframe src="https://youtube.com" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <p>Introdução</p>
+    </div>
+    <div class="video-card">
+      <iframe src="https://youtube.com" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <p>EP.1 — Os 4 temperamentos: qual é o seu e como isso molda sua personalidade</p>
+    </div>
+    <div class="video-card">
+      <iframe src="https://youtube.com" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <p>EP.2 — Como cada temperamento reage ao estresse (e o que isso revela sobre você)</p>
+    </div>
+    <div class="video-card">
+      <iframe src="https://youtube.com" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <p>EP.3 — Por que alguns temperamentos se atraem e outros entram em conflito</p>
+    </div>
+    <div class="video-card">
+      <iframe src="https://youtube.com" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <p>EP.4 — O lado oculto dos temperamentos: qual é o seu ponto fraco emocional</p>
+    </div>
+    <div class="video-card">
+      <iframe src="https://youtube.com" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <p>EP.5 — Como equilibrar seu temperamento e parar de se sabotar</p>
+    </div>
+  </div>
+</div>
+
+</div>
+</section>
+</div>
+
+
+
+
+
+
+<!-- Chart.js e jsPDF (necessários para o gráfico e o PDF do resultado) -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  let resultadoGlobal = { principal: "", secundario: "", nome: "" };
+
+  const nomesBonitos = {
+    colerico: "Colérico", sanguineo: "Sanguíneo", melancolico: "Melancólico", fleumatico: "Fleumático"
+  };
+
+  const perguntas = [
+    "Quando algo foge do seu controle, o que acontece dentro de você?",
+    "Em um ambiente com várias pessoas, você costuma:",
+    "Quando algo te machuca emocionalmente, você:",
+    "Como você costuma lidar com decisões importantes?",
+    "Quando você está sob pressão, sua reação é:",
+    "Como você lida com conflitos?",
+    "O que mais te incomoda nas pessoas?",
+    "Como você costuma se comportar em relacionamentos?",
+    "Quando algo dá errado, seu pensamento automático é:",
+    "Como você lida com suas emoções no dia a dia?",
+    "Você sente que sua mente é mais:",
+    "Qual dessas frases mais parece com você?"
+  ];
+
+  const opcoes = [
+    ["Tento assumir o controle rapidamente", "Busco alguém para conversar", "Analiso tudo profundamente", "Tento evitar ou me afastar"],
+    ["Tomar iniciativa e liderar", "Interagir e conversar com todos", "Observar antes de agir", "Ficar mais na sua"],
+    ["Tenta resolver na hora", "Se distrai ou busca apoio", "Fica pensando por muito tempo", "Guarda para si"],
+    ["Decide rápido", "Pede opinião", "Analisa muito antes", "Adia ao máximo"],
+    ["Age imediatamente", "Procura apoio", "Pensa demais", "Se fecha"],
+    ["Enfrenta direto", "Tenta manter harmonia", "Analisa antes de agir", "Evita confronto"],
+    ["Lentidão", "Frieza ou distância", "Erros", "Conflitos"],
+    ["Intenso e direto", "Afetuoso e presente", "Profundo e cuidadoso", "Tranquilo e estável"],
+    ["“Preciso resolver isso agora”", "“Vou tentar não pensar nisso”", "“Por que isso aconteceu?”", "“Deixa assim…”"],
+    ["Expressa com facilidade", "Busca apoio", "Guarda e processa", "Evita lidar"],
+    ["Acelerada", "Emocional", "Analítica", "Tranquila"],
+    ["“Preciso ter controle”", "“Preciso de conexão”", "“Preciso entender tudo”", "“Só quero paz”"]
+  ];
+
+  const tipos = ["colerico","sanguineo","melancolico","fleumatico"];
+  const container = document.getElementById("questions");
+
+  let html = "";
+  perguntas.forEach((pergunta, i) => {
+    html += `<div class="question"><p>${i + 1}. ${pergunta}</p>`;
+    opcoes[i].forEach((opcao, j) => {
+      html += `<label class="option">
+        <input type="radio" name="q${i}" value="${tipos[j]}">
+        <span>${opcao}</span>
+      </label>`;
+    });
+    html += `</div>`;
+  });
+  container.innerHTML = html;
+
+  globalThis.calcular = function () {
+    let respostas = document.querySelectorAll('input[type="radio"]:checked');
+    if (respostas.length < perguntas.length) {
+      alert("Responda todas as perguntas.");
+      return;
+    }
+
+    let contagem = { colerico:0, sanguineo:0, melancolico:0, fleumatico:0 };
+    respostas.forEach(r => contagem[r.value]++);
+
+    let ordenado = Object.entries(contagem).sort((a,b)=>b[1]-a[1]);
+    let principal = ordenado[0][0];
+    let secundario = ordenado[1][0];
+    let nome = document.getElementById("nome").value || "Você";
+
+    resultadoGlobal = { principal, secundario, nome };
+
+    const descricao = {
+      colerico: {
+        positivo: "Você é direto, determinado e gosta de resolver as coisas rapidamente.",
+        negativo: "Pode ser impulsivo, controlador e ter dificuldade em lidar com emoções.",
+        impacto: "Isso pode gerar conflitos, sobrecarga e afastamento de pessoas importantes."
+      },
+      sanguineo: {
+        positivo: "Você é comunicativo, emocional e se conecta facilmente com as pessoas.",
+        negativo: "Pode agir por impulso e depender da validação dos outros.",
+        impacto: "Isso pode gerar instabilidade emocional e dificuldade em manter foco."
+      },
+      melancolico: {
+        positivo: "Você é analítico, profundo e atento aos detalhes.",
+        negativo: "Pode pensar demais e se cobrar excessivamente.",
+        impacto: "Isso pode gerar ansiedade, insegurança e travar decisões."
+      },
+      fleumatico: {
+        positivo: "Você é calmo, equilibrado e evita conflitos.",
+        negativo: "Pode evitar decisões e guardar emoções.",
+        impacto: "Isso pode levar à procrastinação e a se anular."
+      }
+    };
+
+    document.getElementById("resultado").style.display = "block";
+    document.getElementById("resultado").innerHTML = `
+      <h2>${nome}, esse é o seu resultado:</h2>
+      <p><b>Temperamento principal:</b> ${nomesBonitos[principal]}</p>
+      <p>${descricao[principal].positivo}</p>
+      <p style="margin-top:10px;"><b>Ponto de atenção:</b></p>
+      <p>${descricao[principal].negativo}</p>
+      <p style="margin-top:10px;"><b>Como isso impacta sua vida:</b></p>
+      <p>${descricao[principal].impacto}</p>
+      <br>
+      <p><b>Temperamento secundário:</b> ${nomesBonitos[secundario]}</p>
+      <p>${descricao[secundario].positivo}</p>
+      <canvas id="grafico" style="max-width:400px; margin-top:20px;"></canvas>
+      <button id="baixarPDF" class="btn" style="margin-top:20px; width:auto;">Baixar PDF</button>
+      <p style="margin-top:15px; font-weight:bold; color:#96695C;">
+        Se você não entende esse padrão, ele continua se repetindo automaticamente.
+      </p>
+      <p style="margin-top:10px;">
+        Esse resultado mostra padrões emocionais que influenciam suas decisões, relações e sua forma de reagir ao mundo.
+      </p>
+      <p style="margin-top:10px;">
+        Entender isso é o primeiro passo para ter mais controle sobre sua vida, melhorar seus relacionamentos e alcançar seus objetivos.
+      </p>
+    `;
+
+    const ctx = document.getElementById('grafico').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: Object.keys(contagem).map(k=>nomesBonitos[k]),
+        datasets: [{
+          label: 'Pontuação por Temperamento',
+          data: Object.values(contagem),
+          backgroundColor: ['#96695C','#C17F63','#3B2E28','#A38F85']
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: { y: { beginAtZero: true, stepSize: 1 } }
+      }
+    });
+
+    document.getElementById("baixarPDF").addEventListener("click", function() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      let y = 10;
+      doc.setFontSize(16);
+      doc.text(`${nome}, esse é o seu resultado:`, 10, y);
+      y += 10;
+      doc.setFontSize(12);
+      doc.text(`Temperamento principal: ${nomesBonitos[principal]}`, 10, y);
+      y += 8;
+      doc.text(descricao[principal].positivo, 10, y);
+      y += 8;
+      doc.text(`Ponto de atenção: ${descricao[principal].negativo}`, 10, y);
+      y += 8;
+      doc.text(`Impacto na vida: ${descricao[principal].impacto}`, 10, y);
+      y += 12;
+      doc.text(`Temperamento secundário: ${nomesBonitos[secundario]}`, 10, y);
+      y += 8;
+      doc.text(descricao[secundario].positivo, 10, y);
+      doc.save("resultado_temperamento.pdf");
+    });
+  };
+
+  globalThis.enviarWhats = function () {
+    globalThis.open("https://wa.me/5513996621700?text=Ol%C3%A1%20Liliane%2C%20fiz%20o%20teste%20de%20temperamento%20e%20gostaria%20de%20agendar%20uma%20sess%C3%A3o");
+  };
+
+});
+</script>
